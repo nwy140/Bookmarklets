@@ -1,0 +1,16 @@
+// for copying local video browser video timestamps
+
+javascript: (function() {
+  var timestamp = document.querySelector('video').currentTime;
+  var videoUrl = window.location.href.split('#')[0];  // Removes existing '#t=...' if any
+  var timestampUrl = videoUrl + "#t=" + Math.floor(timestamp);
+  navigator.clipboard.writeText(timestampUrl).then(function() {
+  }, function() {
+  });
+})();
+
+
+
+https://chatgpt.com/share/68ce44bf-9000-8009-bd9f-33b4555d8387
+
+
