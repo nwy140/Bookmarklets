@@ -1,0 +1,16 @@
+javascript:(function(){
+  var url = window.location.href;
+  if (url.startsWith("file:///Volumes/ACCESS/")) {
+    var newUrl = url.replace("file:///Volumes/ACCESS/", "file:///U:/");
+    navigator.clipboard.writeText(newUrl).then(function() {
+      //alert("Copied Windows path: " + newUrl);
+    }, function() {
+      //alert("Failed to copy new URL");
+    });
+  } else {
+    //alert("This is not a /Volumes/ACCESS/ path");
+  }
+})();
+
+
+// https://chatgpt.com/c/68cfdd81-5e28-8326-9013-def423abd673 
