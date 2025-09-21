@@ -1,0 +1,49 @@
+
+javascript:(function(){
+  var v = document.querySelector('video');
+  if(!v){ alert('No video element found'); return; }
+  var t = Math.floor(v.currentTime);
+  var url = window.location.href.split('#')[0] + '#t=' + t;
+  function fallbackPrompt(){ //prompt('Copy the timestamp URL:', url); 
+  }
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(function(){
+      alert('Copied: ' + url);
+    }, function(){
+      // clipboard failed -> try execCommand fallback
+      var ta = document.createElement('textarea');
+      ta.value = url;
+      ta.style.position = 'fixed'; ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        var ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        if (ok) alert('Copied to clipboard: ' + url);
+        else fallbackPrompt();
+      } catch(e) {
+        document.body.removeChild(ta);
+        fallbackPrompt();
+      }
+    });
+  } else {
+    // no navigator.clipboard -> try execCommand
+    var ta = document.createElement('textarea');
+    ta.value = url;
+    ta.style.position = 'fixed'; ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      if (ok) alert('Copied to clipboard: ' + url);
+      else fallbackPrompt();
+    } catch(e) {
+      document.body.removeChild(ta);
+      fallbackPrompt();
+    }
+  }
+})();
+
+
