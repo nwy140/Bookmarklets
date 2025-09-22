@@ -1,7 +1,7 @@
 javascript:(function(){
   var url = window.location.href;
-  if (url.startsWith("file:///V:/")) {
-    var newUrl = url.replace("file:///U:/", "file:///Volumes/V/");
+  if (url.startsWith("file:///D:/")) {
+    var newUrl = url.replace("file:///D:/", "file:///Volumes/V/");
     navigator.clipboard.writeText(newUrl).then(function() {
       //alert("Copied Windows path: " + newUrl);
     }, function() {
