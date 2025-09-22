@@ -1,14 +1,14 @@
 javascript:(function(){
   var url = window.location.href;
   if (url.startsWith("file:///U:/")) {
-    var newUrl = url.replace("file:///U:/", "file:///Volumes/ACCESS/");
+    var newUrl = url.replace("file:///U:/", "file:///Volumes/V/");
     navigator.clipboard.writeText(newUrl).then(function() {
       //alert("Copied Windows path: " + newUrl);
     }, function() {
       //alert("Failed to copy new URL");
     });
   } else {
-    //alert("This is not a /Volumes/ACCESS/ path");
+    //alert("This is not a /Volumes/V/ path");
   }
 })();
 
